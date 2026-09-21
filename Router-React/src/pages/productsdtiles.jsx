@@ -11,7 +11,7 @@ export default function ProductsDetails() {
 
   if (!product) {
     return (
-      <div>
+      <div className="product-details">
         <h1>Product not found</h1>
 
         <button onClick={() => navigate("/products")}>

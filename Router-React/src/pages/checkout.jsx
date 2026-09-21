@@ -1,6 +1,6 @@
 export default function Checkout() {
   return (
-    <div>
+    <div className="checkout-page">
       <h1>Checkout</h1>
 
       <p>This page is protected.</p>

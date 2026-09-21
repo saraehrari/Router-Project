@@ -12,7 +12,7 @@ export default function Login({ onLogin }) {
   }
 
   return (
-    <div>
+    <div className="login-page">
       <h1>Login</h1>
 
       <p>You must login to access checkout.</p>

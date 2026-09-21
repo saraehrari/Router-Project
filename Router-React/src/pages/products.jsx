@@ -3,7 +3,7 @@ import products from "../data/products";
 
 export default function Products() {
   return (
-    <div>
+    <div className="products-list">
       <h1>Products</h1>
 
       <ul>
