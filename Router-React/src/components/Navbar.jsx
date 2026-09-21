@@ -8,7 +8,12 @@ const linkStyle = ({ isActive }) => ({
 
 function Navbar({ isAuth, onLogout }) {
   return (
-    <div style={{ padding: 12, borderBottom: "1px solid #ddd" }}>
+    <nav
+      style={{
+        padding: 12,
+        borderBottom: "1px solid #ddd",
+      }}
+    >
       <NavLink to="/" style={linkStyle}>
         Home
       </NavLink>
@@ -23,12 +28,16 @@ function Navbar({ isAuth, onLogout }) {
 
       <span style={{ marginLeft: 20 }}>
         {isAuth ? (
-          <button onClick={onLogout}>Logout</button>
+          <button onClick={onLogout}>
+            Logout
+          </button>
         ) : (
-          <span style={{ opacity: 0.7 }}>Not logged in</span>
+          <span style={{ opacity: 0.7 }}>
+            Not logged in
+          </span>
         )}
       </span>
-    </div>
+    </nav>
   );
 }
 

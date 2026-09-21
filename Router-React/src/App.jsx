@@ -1,43 +1,60 @@
+
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/protectedRoute";
+
 import Home from "./pages/Home";
-import products from "./pages/products";
-import productsdtiles from "./pages/productsdtiles";
+import Products from "./pages/products";
+import ProductsDetails from "./pages/productsdtiles";
+import Login from "./pages/login";
+import Checkout from "./pages/Checkout";
 
+function App() {
+  const [isAuth, setIsAuth] = useState(false);
 
-function App(){
-  const[isAuth, setIsauth]= useState(false);
-  function login(){
-    setIsauth(true)
+  function handleLogin() {
+    setIsAuth(true);
   }
 
-  function logout(){
-    setIsauth(false)
+  function handleLogout() {
+    setIsAuth(false);
   }
 
-
-  return(
-
+  return (
     <div>
-      <Navbar 
-      isAuth={isAuth}
-    onLogout={logout}
+      <Navbar
+        isAuth={isAuth}
+        onLogout={handleLogout}
       />
 
-
-
       <Routes>
-         <Route path="/" element={<Home/>}/>
-         <Route path="/products" element={<products/>}/>
-         <Route path="/products:id" element={<productsdtiles/>}/>
-         <Route path="/login" element={<login onlogin={login}/>}/>
+        <Route path="/" element={<Home />} />
 
-<Route path="/checkout" element={<protecredRoute/>}>
+        <Route path="/products" element={<Products />} />
 
+        <Route
+          path="/products/:id"
+          element={<ProductsDetails />}
+        />
 
+        <Route
+          path="/login"
+          element={<Login onLogin={handleLogin} />}
+        />
 
-</Route>
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute isAuth={isAuth}>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
-  )
+  );
 }
+
+export default App;

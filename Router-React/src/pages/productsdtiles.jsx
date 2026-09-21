@@ -1,29 +1,41 @@
 import { useNavigate, useParams } from "react-router-dom";
 import products from "../data/products";
-import products from "./products";
-export default function productsdtiles(){
-    const{id}= useParams();
-    const products= products.find((p)=> p.id === Number(id));
-    const navigate=useNavigate();
-    if(!products){
-        return(
-            <div>
-                <h1>Product not found</h1>
-                <button onClick={()=>navigate("/products")}>Back to products</button>
-            </div>
-        )
-    }
 
-    return(
+export default function ProductsDetails() {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-        <div>
+  const product = products.find(
+    (item) => item.id === Number(id)
+  );
 
-            <h1>{products.name}</h1>
-            <p>{products.price}</p>
-            <p>{products.describtion}</p>
-            <button onClick={()=> navigate(-1)}>Back</button>
-            <button onClick={()=>navigate("/checkout")}>Go to checkout</button>
-        </div>
-    )
+  if (!product) {
+    return (
+      <div>
+        <h1>Product not found</h1>
+
+        <button onClick={() => navigate("/products")}>
+          Back to Products
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1>{product.name}</h1>
+
+      <p>${product.price}</p>
+
+      <p>{product.description}</p>
+
+      <button onClick={() => navigate(-1)}>
+        Back
+      </button>
+
+      <button onClick={() => navigate("/checkout")}>
+        Go to Checkout
+      </button>
+    </div>
+  );
 }
-

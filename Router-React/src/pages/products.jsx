@@ -1,19 +1,22 @@
-import products from "../data/products"
-export default function products(){
-    return(
-        <div>
-            <h1>products</h1>
-               <ul>
-                {
-                    products.map((products)=>
-                      <li>
-                    key={products.id} 
-                    <b>{products.name}</b> - ${products.pri} {" "}
-                    <Link to={`/products/${products.id}`}>View Detiles</Link>
-                      </li>
-                    )
-                }
-               </ul>
-        </div>
-    )
+import { Link } from "react-router-dom";
+import products from "../data/products";
+
+export default function Products() {
+  return (
+    <div>
+      <h1>Products</h1>
+
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <b>{product.name}</b> - ${product.price}{" "}
+
+            <Link to={`/products/${product.id}`}>
+              View Details
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
