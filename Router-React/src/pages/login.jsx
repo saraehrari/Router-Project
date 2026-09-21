@@ -11,4 +11,16 @@ function handlelogin(){
     onlogin();
     navigates(from, {replace:true})
 }
+
+
+
+return(
+    <div>
+        <h1>
+            Login
+        </h1>
+        <p>You must login to access checkout.</p>
+        <button onClick={handlelogin}>Login</button>
+            </div>
+)
 }
